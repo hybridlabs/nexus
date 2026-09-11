@@ -13,26 +13,27 @@ import kotlin.let
 
 class ProgressiveFoodItem(
     properties: Properties,
-    private val nextItem: () -> Item?
+    private val nextItem: () -> Item
 ) : Item(properties) {
 
-    override fun finishUsingItem(
-        stack: ItemStack,
-        level: Level,
-        entityLiving: LivingEntity
-    ): ItemStack {
-        super.finishUsingItem(stack, level, entityLiving)
+    override fun finishUsingItem(stack: ItemStack, level: Level, entity: LivingEntity): ItemStack {
+        // eating already awards stats, triggers advancements and shrinks the stack
+        val result = super.finishUsingItem(stack, level, entity)
 
-        if (entityLiving is ServerPlayer) {
-            CriteriaTriggers.CONSUME_ITEM.trigger(entityLiving, stack)
-            entityLiving.awardStat(Stats.ITEM_USED.get(this))
+        if (entity is Player && entity.abilities.instabuild) {
+            return result
         }
 
-        if (entityLiving is Player && !entityLiving.abilities.instabuild) {
-            stack.shrink(1)
+        val remainder = ItemStack(nextItem())
+        if (result.isEmpty) {
+            return remainder
         }
 
-        return nextItem()?.let(::ItemStack) ?: ItemStack.EMPTY
+        if (entity is Player && !entity.inventory.add(remainder)) {
+            entity.drop(remainder, false)
+        }
+
+        return result
     }
 
     override fun getUseDuration(stack: ItemStack): Int = 32
