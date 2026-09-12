@@ -12,8 +12,6 @@ dependencies {
 }
 
 legacyForge {
-    apply plugin: 'org.jetbrains.kotlin.jvm'
-    apply plugin: 'kotlin'
     version = "${minecraft_version}-${forge_version}"
 
     // AT validation is broken on Forge 1.20.1
@@ -74,11 +72,6 @@ repositories {
     }
 
     maven {
-        name = "Modrinth"
-        url = "https://api.modrinth.com/maven/"
-    }
-
-    maven {
         name = "Terraformers"
         url = "https://maven.terraformersmc.com/releases/"
     }
@@ -87,8 +80,6 @@ repositories {
         name = "Illusive Soulworks maven"
         url = "https://maven.theillusivec4.top/"
     }
-
-    mavenCentral()
 }
 
 sourceSets.main.resources.srcDirs += 'src/generated/resources'
