@@ -126,7 +126,7 @@ publishing {
     }
     repositories {
         maven {
-            name = 'Hybrid Labs'
+            name = 'HybridLabs'
             url = 'https://maven.dvitski.cc/releases'
             credentials {
                 username = project.findProperty('hybridlabsMavenUser') ?: System.getenv('HYBRIDLABS_MAVEN_USER')
