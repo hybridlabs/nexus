@@ -2,7 +2,7 @@ plugins {
     id 'multiloader-loader'
     id 'net.neoforged.moddev'
     id 'org.jetbrains.kotlin.jvm'
-    id "me.modmuss50.mod-publish-plugin" version "0.8.4"
+    id 'me.modmuss50.mod-publish-plugin'
 }
 
 neoForge {
@@ -54,15 +54,11 @@ repositories {
         name = 'Kotlin for Forge'
         url = 'https://thedarkcolour.github.io/KotlinForForge/'
     }
+
     maven {
         name = "Geckolib"
         url = "https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/"
     }
-    maven {
-        name = "Modrinth"
-        url = "https://api.modrinth.com/maven/"
-    }
-    mavenCentral()
 }
 sourceSets.main.resources.srcDirs += 'src/generated/resources'
 
