@@ -12,6 +12,7 @@ neoForge {
     if (at.exists()) {
         accessTransformers.from(at.absolutePath)
     }
+
     parchment {
         minecraftVersion = parchment_minecraft
         mappingsVersion = parchment_version
@@ -79,6 +80,12 @@ dependencies {
     implementation 'org.jetbrains:annotations:25.0.0'
     implementation "software.bernie.geckolib:geckolib-neoforge-$geckolib_version"
     implementation "thedarkcolour:kotlinforforge-neoforge:${kotlin_for_forge_version}"
+}
+
+jar {
+    manifest.attributes([
+            "MixinConfigs": "${mod_id}.forge.mixins.json"
+    ])
 }
 
 compileKotlin {

@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "dev.hybridlabs.hapi.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "WaterlilyBlockMixin"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
