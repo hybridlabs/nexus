@@ -132,7 +132,12 @@ publishing {
     }
     repositories {
         maven {
-            url System.getenv('local_maven_url')
+            name = 'Hybrid Labs'
+            url = 'https://maven.dvitski.cc/releases'
+            credentials {
+                username = project.findProperty('hybridlabsMavenUser') ?: System.getenv('HYBRIDLABS_MAVEN_USER')
+                password = project.findProperty('hybridlabsMavenPassword') ?: System.getenv('HYBRIDLABS_MAVEN_PASSWORD')
+            }
         }
     }
 }
