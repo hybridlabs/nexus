@@ -69,6 +69,14 @@ object HAPIEntityTags {
 
     val NET_CATCHABLE = create("net_catchable")
 
+    //#region Vehicle Tags
+    /**
+     * Entities that should behave like a boat for the purposes of world interaction, most notably
+     * breaking lily pads. Modded boats that do not extend vanilla's Boat belong here.
+     */
+    val BOATS = create("boats")
+    //#endregion
+
     private fun create(id: String): TagKey<EntityType<*>> {
         return TagKey.create(Registries.ENTITY_TYPE, CommonClass.locate(id))
     }

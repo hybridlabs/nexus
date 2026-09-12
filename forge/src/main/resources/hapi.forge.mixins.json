@@ -1,10 +1,15 @@
 {
   "required": true,
+  "minVersion": "0.8",
   "package": "dev.hybridlabs.hapi.mixin",
   "compatibilityLevel": "JAVA_17",
-  "minVersion": "0.8.5",
-  "refmap": "fantastic_fishery.refmap.json",
+  "refmap": "hapi.refmap.json",
   "mixins": [
+    "WaterlilyBlockMixin"
+  ],
+  "client": [
+  ],
+  "server": [
   ],
   "injectors": {
     "defaultRequire": 1

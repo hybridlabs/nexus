@@ -24,6 +24,11 @@ legacyForge {
         accessTransformers = [project(':common').file('src/main/resources/META-INF/accesstransformer.cfg')]
     }
 
+    mixin {
+        add(sourceSets.main, "${mod_id}.refmap.json")
+        config("${mod_id}.forge.mixins.json")
+    }
+
     parchment {
         minecraftVersion = minecraft_version
         mappingsVersion = parchment_version
