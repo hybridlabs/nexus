@@ -836,5 +836,15 @@ class EntityTypeTagProvider(output: FabricDataOutput, registriesFuture: Completa
             .addTag(HAPIEntityTags.RATITE)
             .addTag(HAPIEntityTags.SONGBIRD)
         //#endregion
+
+        //#region Vehicle Tags
+        // HAPI only declares the tag and seeds it with vanilla's boats; mods that add their own
+        // boats append to it from their own data generators.
+        getOrCreateTagBuilder(HAPIEntityTags.BOATS)
+            .add(
+                EntityType.BOAT,
+                EntityType.CHEST_BOAT
+            )
+        //#endregion
     }
 }
